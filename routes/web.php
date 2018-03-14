@@ -1,6 +1,6 @@
 <?php
 
-/*
+/* 
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -16,5 +16,5 @@
 // });
 
 
-Route::get('/', 'ImageController@resizeImage');
-Route::post('/resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
+Route::get('/',['as'=>'intervention.getresizeimage','uses'=>'ImageController@getResizeImage']);
+Route::post('intervention-resizeImage',['as'=>'intervention.postresizeimage','uses'=>'ImageController@postResizeImage']);

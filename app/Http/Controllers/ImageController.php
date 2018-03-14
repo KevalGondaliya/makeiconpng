@@ -3,60 +3,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use App\Http\Controllers\Controller;
+use Image;
 
 class ImageController extends Controller
 {
-   
-/**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function resizeImage()
+    
+    public function getResizeImage()
     {
-    return view('resizeImage');
+        return view('resizeimage');
     }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function resizeImagePost(Request $request)
+    public function postResizeImage(Request $request)
     {
-    $this->validate($request, [
-    'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $this->validate($request, [
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1536',
         ]);
+        $photo = $request->file('photo');
+        $imagename = time().'.'.$photo->getClientOriginalExtension(); 
 
 
-        $image = $request->file('image');
-        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-     
-   
-        $destinationPath = public_path('/thumbnail');
-        $img = Image::make($image->getRealPath());
-        $img->resize(100, 100, function ($constraint) {
-    		$constraint->aspectRatio();
-			})->save($destinationPath.'/'.$input['imagename']);
+        // icon for android 
 
- 			$img->resize(intval(200,200), null, function($constraint) {
-                 $constraint->aspectRatio();
-            }); 
-              $img->save(public_path('upload/thumbnail_images/thumb'). '/'. $saThumbName);
+        $destinationPath = public_path('upload/android/mipmap-hdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(72, 72);
+        $thumb_img->save($destinationPath.'/'.$imagename);
 
-        $destinationPath = public_path('/images');
-        $image->move($destinationPath, $input['imagename']);
+        $destinationPath = public_path('upload/android/mipmap-ldpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(36, 36);
+        $thumb_img->save($destinationPath.'/'.$imagename);
 
+        $destinationPath = public_path('upload/android/mipmap-mdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(48, 48);
+        $thumb_img->save($destinationPath.'/'.$imagename);
 
-        $this->postImage->add($input);
+        $destinationPath = public_path('upload/android/mipmap-xhdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(96, 96);
+        $thumb_img->save($destinationPath.'/'.$imagename);
 
+        $destinationPath = public_path('upload/android/mipmap-xxhdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(144, 144);
+        $thumb_img->save($destinationPath.'/'.$imagename);
 
+        $destinationPath = public_path('upload/android/mipmap-xxxhdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(192, 192);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/android/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(256, 256);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+        
+
+        $destinationPath = public_path('upload/');
+        $photo->move($destinationPath, $imagename);
         return back()
-        ->with('success','Image Upload successful')
-        ->with('imageName',$input['imagename']);
+            ->with('success','Image Upload successful')
+            ->with('imagename',$imagename);
     }
+
+
 
 }

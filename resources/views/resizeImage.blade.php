@@ -1,53 +1,97 @@
 
-<div class="container">
-<h1>Resize Image Uploading Demo</h1>
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-<strong>Whoops!</strong> There were some problems with your input.<br><br>
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-</div>
-
-@endif
-
-
-@if ($message = Session::get('success'))
-<div class="alert alert-success alert-block">
-<button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-</div>
-<div class="row">
-<div class="col-md-4">
-<strong>Original Image:</strong>
-<br/>
-<img src="/images/{{ Session::get('imageName') }}" />
-</div>
-<div class="col-md-4">
-<strong>Thumbnail Image:</strong>
-<br/>
-<img src="/thumbnail/{{ Session::get('imageName') }}" />
-</div>
-</div>
-@endif
-
-
-{!! Form::open(array('route' => 'resizeImagePost','enctype' => 'multipart/form-data')) !!}
-<div class="row">
-<div class="col-md-4">
-<br/>
-{!! Form::text('title', null,array('class' => 'form-control','placeholder'=>'Add Title')) !!}
-</div>
-<div class="col-md-12">
-<br/>
-{!! Form::file('image', array('class' => 'image')) !!}
-</div>
-<div class="col-md-12">
-<br/>
-<button type="submit" class="btn btn-success">Upload Image</button>
-</div>
-</div>
-{!! Form::close() !!}
+<div class="panel panel-primary">
+ <div class="panel-heading">Best icon resizer for mobile app developers.</div>
+  <div class="panel-body"> 
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+          <p class="error_item">{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
+    @if (Session::get('success'))
+    
+    <div class="row">
+    <!--     <div class="col-md-12">
+	        <div class="col-md-4">
+	            <strong>Image Before Resize:</strong>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/small/'.Session::get('imagename')) }}" />
+	        </div>
+        </div> -->
+        <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px; display: inline-flex;">ic_launcher</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/mipmap-hdpi/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px;">ic_launcher</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/mipmap-ldpi/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px;">ic_launcher</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/mipmap-mdpi/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px;">ic_launcher</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/mipmap-xhdpi/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+        <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px;">ic_launcher</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/mipmap-xxhdpi/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+         <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px;">ic_launcher</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/mipmap-xxxhdpi/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+         <div class="col-md-12" style="margin-top:10px;">
+	        <div class="col-md-4">
+	            <p style="margin-left: 15px;">playstore-icon</p>
+	        </div>
+	        <div class="col-md-8">    
+	            <img src="{{asset('upload/android/'.Session::get('imagename')) }}" />
+	        </div>
+        </div>
+        
+        
+    </div>
+    @endif
+    {!! Form::open(array('route' => 'intervention.postresizeimage','files'=>true)) !!}
+        <div class="row">
+        
+            <div class="col-md-6">
+                <br/>
+                {!! Form::file('photo', array('class' => 'form-control')) !!}
+            </div>
+            <div class="col-md-6">
+                <br/>
+                <button type="submit" class="btn btn-primary">Upload Image</button>
+            </div>
+        </div>
+    {!! Form::close() !!}
+ </div>
 </div>
