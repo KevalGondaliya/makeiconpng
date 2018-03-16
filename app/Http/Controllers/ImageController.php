@@ -166,9 +166,9 @@ class ImageController extends Controller
 
          // iphone----------------------------------------- 
 
-        $destinationPath = public_path('upload/iphone/istore/');
-        $thumb_img = Image::make($photo->getRealPath())->resize(1024, 1024);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        // $destinationPath = public_path('upload/iphone/istore/');
+        // $thumb_img = Image::make($photo->getRealPath())->resize(1024, 1024);
+        // $thumb_img->save($destinationPath.'/'.$imagename);
 
 
         $destinationPath = public_path('upload/');
