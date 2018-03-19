@@ -149,7 +149,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class, 
         Illuminate\Html\HtmlServiceProvider::class, 
-  
+        'Chumper\Zipper\ZipperServiceProvider',
+    
         /*
          * Package Service Providers...
          */
@@ -215,6 +216,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Carbon' => 'Carbon\Carbon',
+        'Zipper' => 'Chumper\Zipper\Zipper',
 
     ],
 

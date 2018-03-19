@@ -687,6 +687,7 @@ ul.memphis-parallax li {
     letter-spacing: 2px;
     padding: 20px 0;
     text-align: center;
+
 }
 
 
@@ -875,10 +876,32 @@ nav.navbar.navbar-default.navbar-fixed-top.nav-center-aligned {
   background: rgba(0, 0, 0, 0) -webkit-linear-gradient(left, #1e5799 0%, #3ccdbb 0%, #16c9f6 100%) repeat scroll 0 0;
   background: rgba(0, 0, 0, 0) linear-gradient(to right, #1e5799 0%, #3ccdbb 0%, #16c9f6 100%) repeat scroll 0 0;
   content: "";
-  height:65%;
+  height:75%;
   left: 0;
   opacity: 0.8;
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+#testingdiv {
+    margin-top: 183px;
+}
+
+#android_icon {
+
+    padding: 15px;
+    background-color: #f3f3f3;
+    box-shadow: 10px 10px #e8e8e8;
+    border-radius: 10px;
+}
+#iphone_icon {
+     padding: 15px;
+    background-color: #f3f3f3;
+    box-shadow: 10px 10px #e8e8e8;
+    border-radius: 10px;
+    margin: 2px;
+}
+#img-icon {
+    border-radius: 5px;
 }

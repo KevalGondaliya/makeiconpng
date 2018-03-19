@@ -18,3 +18,5 @@
 
 Route::get('/',['as'=>'intervention.getresizeimage','uses'=>'ImageController@getResizeImage']);
 Route::post('intervention-resizeImage',['as'=>'intervention.postresizeimage','uses'=>'ImageController@postResizeImage']);
+
+Route::get('iconzip', ['as'=>'intervention.zipconvert','uses'=>'ImageController@zipConvert']);

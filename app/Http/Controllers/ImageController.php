@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Image;
+use ZipArchive;
+use Zipper;
 
 class ImageController extends Controller
 {
@@ -176,6 +178,17 @@ class ImageController extends Controller
         return back()
             ->with('success','Image Upload successful')
             ->with('imagename',$imagename);
+    }
+
+
+     public function zipConvert(Request $request)
+    {
+
+        $files = glob(public_path('upload/'));
+
+            Zipper::make('upload/mytest3.zip')->add($files);
+           
+            return response()->download(public_path('upload/mytest3.zip'));
     }
 
 
