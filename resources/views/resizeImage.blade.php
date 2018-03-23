@@ -24,7 +24,7 @@
 			                {!! Form::file('photo', array('class' => 'form-control')) !!}
 			            </div>
 			            <div class="col-md-12">
-			                <br/>
+			                <br/> 
 			                <button type="submit" class="btn btn-primary">Upload Image</button>
 			            </div>
 			        </div>
@@ -69,10 +69,10 @@
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
 		            <p style="margin-left: 15px;">playstore-icon</p>
-		            <img src="{{asset('upload/android/'.Session::get('imagename')) }}" id="img-icon" />
+		            <img src="{{asset('upload/android/playstore-icon/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 
-	          {!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
+	       <!--    {!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
 			        <div class="row">
 			            <div class="col-md-12">
 			                <br/>
@@ -81,7 +81,7 @@
 			            </div>
 			        </div>
    				{!! Form::close() !!}
-
+ -->
         </div>
         
         <!-- iphone icon -->
@@ -186,7 +186,7 @@
 		            <img src="{{asset('upload/iphone/ismall50/Icon-Small-50x50@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 
-
+<!-- 
 			{!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
 			<div class="row">
 				<div class="col-md-12">
@@ -196,7 +196,7 @@
 				</div>
 			</div>
 			{!! Form::close() !!}
-
+ -->
 					<!--  iphone icon-->
 	   
 	    </div> 
@@ -206,52 +206,55 @@
 	     <div class="col-md-3 col-md-push-1" id="android_icon">
         	<h3>Imessenger</h3>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <p style="margin-left: 15px;">icon-messages-app-27x20@1x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-27x20@1x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <p style="margin-left: 15px;">icon-messages-app-27x20@2x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-27x20@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <p style="margin-left: 15px;">icon-messages-app-27x20@3x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-27x20@3x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <p style="margin-left: 15px;">icon-messages-app-iPadAir-67x50@2x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <p style="margin-left: 15px;">icon-messages-app-iPadAir-74x55@2x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <p style="margin-left: 15px;">icon-messages-app-iPhone-60x45@1x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	        <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <p style="margin-left: 15px;">icon-messages-app-iPhone-60x45@2x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 
 	         <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <p style="margin-left: 15px;">icon-messages-app-iPhone-60x45@3x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	         <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <p style="margin-left: 15px;">icon-messages-transcript-32x24@1x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-transcript-32x24@1x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	         <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <p style="margin-left: 15px;">icon-messages-transcript-32x24@2x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-transcript-32x24@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 	         <div class="col-md-12" style="margin-top:10px;">
-		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <p style="margin-left: 15px;">icon-messages-transcript-32x24@3x</p>
 		            <img src="{{asset('upload/imessenger/icon-messages-transcript-32x24@3x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 
-	          {!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
+	       
+
+        </div>
+           {!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
 			        <div class="row">
 			            <div class="col-md-12">
 			                <br/>
@@ -260,8 +263,6 @@
 			            </div>
 			        </div>
    				{!! Form::close() !!}
-
-        </div>
         
 
     </div>
