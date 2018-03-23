@@ -76,7 +76,8 @@
 			        <div class="row">
 			            <div class="col-md-12">
 			                <br/>
-			                <button type="submit" class="btn btn-primary" onclick="zipConvert()">Download</button>
+			                {{--<button type="submit" class="btn btn-primary" onclick="zipConvert()">Download</button>--}}
+							<a href="{{ url('zipConvert/') }}" class="btn btn-primary">Download</a>
 			            </div>
 			        </div>
    				{!! Form::close() !!}
@@ -185,7 +186,18 @@
 		            <img src="{{asset('upload/iphone/ismall50/Icon-Small-50x50@2x/'.Session::get('imagename')) }}" id="img-icon" />
 	        </div>
 
-	          <!--  iphone icon-->
+
+			{!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
+			<div class="row">
+				<div class="col-md-12">
+					<br/>
+					{{--<button type="submit" class="btn btn-primary" onclick="zipConvert()">Download</button>--}}
+					<a href="{{ url('zipConvert/') }}" class="btn btn-primary">Download</a>
+				</div>
+			</div>
+			{!! Form::close() !!}
+
+					<!--  iphone icon-->
 	   
 	    </div> 
 
