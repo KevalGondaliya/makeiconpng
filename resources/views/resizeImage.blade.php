@@ -76,7 +76,7 @@
 			        <div class="row">
 			            <div class="col-md-12">
 			                <br/>
-			                <button type="submit" class="btn btn-primary">Download</button>
+			                <button type="submit" class="btn btn-primary" onclick="zipConvert()">Download</button>
 			            </div>
 			        </div>
    				{!! Form::close() !!}

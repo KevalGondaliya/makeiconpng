@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
+
 use Image;
 use ZipArchive;
 use Zipper;
@@ -26,17 +28,17 @@ class ImageController extends Controller
         // icon for android 
 
         if (file_exists(public_path('upload/android/mipmap-xxhdpi/'))) {
-$res=$this->clearDir(public_path('upload/android/mipmap-xxhdpi/'));
-  
-}
-if (file_exists(public_path('upload/android/mipmap-xxxhdpi/'))) {
-$res=$this->clearDir(public_path('upload/android/mipmap-xxxhdpi/'));
- 
-} 
-if (file_exists(public_path('upload/android/mipmap-hdpi/'))) {
-$res=$this->clearDir(public_path('upload/android/mipmap-hdpi/'));
+            $res=$this->clearDir(public_path('upload/android/mipmap-xxhdpi/'));
+          
+        }
+        if (file_exists(public_path('upload/android/mipmap-xxxhdpi/'))) {
+            $res=$this->clearDir(public_path('upload/android/mipmap-xxxhdpi/'));
+         
+        } 
+        if (file_exists(public_path('upload/android/mipmap-hdpi/'))) {
+            $res=$this->clearDir(public_path('upload/android/mipmap-hdpi/'));
 
-} 
+        } 
 
 
 // var_dump($res);die;
@@ -232,31 +234,52 @@ $destinationPath = public_path('upload/android/mipmap-xxhdpi/');
         $destinationPath = public_path('upload/');
         $photo->move($destinationPath, $imagename);
 
-
         $this->zipConvert();
 
         return back()
             ->with('success','Image Upload successful')
             ->with('imagename',$imagename);
 
-    }
-
+         }
 
      public function zipConvert()
     {
 
         $files = glob(public_path('upload/android/'));
 
+            $time=date('now');
+            $filename='temp'.'.zip';
 
-$time=date('now');
-// var_dump($time);die;
-$filename=$time.'.zip';
+            Zipper::make(public_path().'/upload/'.$filename)->add($files);
 
-            Zipper::make('upload/'.$filename)->add($files);
-           
-            return response()->download(public_path('upload/'.$filename));
+            $file = storage_path().'/'.$filename;
+
+            if(file_exists(public_path().'/upload/'.$filename)){
+            $this->do_download_zip($filename);
+            }
+
+
     }
 
+
+        public function do_download_zip($filename){
+          
+         $img = public_path().'/upload/'.$filename;
+            header("Content-Type: application/zip");
+            header("Content-Length: ");
+
+            echo file_get_contents($img);
+            die();
+
+
+             // $img = public_path().'/upload/'.'temp.zip';
+             //    header("Content-Type: application/zip");
+             //    header("Content-Length: ");
+
+             //    echo file_get_contents($img);
+             //    die();
+
+            }   
 
     public function clearDir($dir){
          // var_dump($dir);die;
@@ -270,10 +293,6 @@ $filename=$time.'.zip';
      
         foreach($structure as $file) {
 
-var_dump($file);
-
-            // if (is_dir($file)) clearDir($file);
-            // elseif (is_file($file)) unlink($file);
  unlink($file);
 
         }
