@@ -41,7 +41,7 @@
     <div class="row">
     
         <!-- android icon -->
-        <div class="col-md-4 col-md-push-2" id="android_icon">
+        <div class="col-md-3 col-md-push-1" id="android_icon">
         	<h3>android</h3>
 	        <div class="col-md-12" style="margin-top:10px;">
 		            <p style="margin-left: 15px;">ic_launcher</p>
@@ -88,7 +88,7 @@
 
         <!--  i20 icon-->
 
-        <div class="col-md-4 col-md-push-2" id="iphone_icon">
+        <div class="col-md-3 col-md-push-1" id="iphone_icon">
         	<h3>iphone</h3>
 	        <div class="col-md-12" style="margin-top:10px;">
 		            <p style="margin-left: 15px;">Icon-App-20x20@2x</p>
@@ -201,6 +201,69 @@
 	   
 	    </div> 
 
+	    <!-- imessenger -->
+
+	     <div class="col-md-3 col-md-push-1" id="android_icon">
+        	<h3>Imessenger</h3>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-27x20@1x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-27x20@2x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-27x20@3x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">ic_launcher</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	        <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+
+	         <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	         <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-transcript-32x24@1x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	         <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-transcript-32x24@2x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+	         <div class="col-md-12" style="margin-top:10px;">
+		            <p style="margin-left: 15px;">playstore-icon</p>
+		            <img src="{{asset('upload/imessenger/icon-messages-transcript-32x24@3x/'.Session::get('imagename')) }}" id="img-icon" />
+	        </div>
+
+	          {!! Form::open(array('route' => 'intervention.zipconvert','files'=>true)) !!}
+			        <div class="row">
+			            <div class="col-md-12">
+			                <br/>
+			                {{--<button type="submit" class="btn btn-primary" onclick="zipConvert()">Download</button>--}}
+							<a href="{{ url('zipConvert/') }}" class="btn btn-primary">Download</a>
+			            </div>
+			        </div>
+   				{!! Form::close() !!}
+
+        </div>
+        
+
     </div>
 
     
@@ -218,3 +281,5 @@
         @include('layouts.footer')
 
         <!-- end footer -->
+
+

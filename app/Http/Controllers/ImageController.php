@@ -177,6 +177,61 @@ class ImageController extends Controller
         $thumb_img = Image::make($photo->getRealPath())->resize(1024, 1024);
         $thumb_img->save($destinationPath.'/'.$imagename);
 
+        // imessenger
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-27x20@1x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(27, 20);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+        
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-27x20@2x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(54, 40);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-27x20@3x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(81, 60);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(134, 100);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(148, 110);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(60, 45);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(120, 90);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(180, 135);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-app-store-1024x768/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(1024, 768);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+        
+         $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@1x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(32, 24);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@2x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(64, 48);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+        $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@3x/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(96, 72);
+        $thumb_img->save($destinationPath.'/'.$imagename);
+
+
+
+
+
+
 
         $destinationPath = public_path('upload/');
         $photo->move($destinationPath, $imagename);
@@ -348,6 +403,44 @@ class ImageController extends Controller
             $res=$this->clearDir(public_path('upload/iphone/istore/'));
         }
 
+        // imessanger
+      if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@1x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@1x/'));
+        }
+         if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@2x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@2x/'));
+        }
+          if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@3x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@3x/'));
+        }
+          if (file_exists(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'));
+        }
+          if (file_exists(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'));
+        }
+         if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'));
+        }
+          if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'));
+        }
+         if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'));
+        }
+        //  if (file_exists(public_path('upload/imessenger/icon-messages-app-store-1024x768/'))) {
+        //     $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-store-1024x768/'));
+        // }
+        if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'));
+        }
+        if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'));
+        }
+         if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'))) {
+            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'));
+        }
+
 
         // android make directory
 
@@ -393,7 +486,20 @@ class ImageController extends Controller
         // istore
         mkdir(public_path('upload/iphone/istore/'), 0777, true);
 
-
+        // imessenger
+        
+        mkdir(public_path('upload/imessenger/icon-messages-app-27x20@1x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-27x20@2x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-27x20@3x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'), 0777, true);
+        // mkdir(public_path('upload/imessenger/icon-messages-app-store-1024x768/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'), 0777, true);
+        mkdir(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'), 0777, true);
     }
 
 }
