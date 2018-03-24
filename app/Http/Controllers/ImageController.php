@@ -12,51 +12,53 @@ use Zipper;
 
 class ImageController extends Controller
 {
-    
+
     public function getResizeImage()
     {
         return view('resizeimage');
     }
+
     public function postResizeImage(Request $request)
     {
         $this->validate($request, [
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1536',
-        ]); 
+        ]);
         $photo = $request->file('photo');
-        $imagename = time().'.'.$photo->getClientOriginalExtension(); 
+//        $imagename = time() . '.' . $photo->getClientOriginalExtension();
+        $imagename = '.' . $photo->getClientOriginalExtension();
 
-        // icon for android 
+        // icon for android
 
         $this->existDirectory();
 
         $destinationPath = public_path('upload/android/mipmap-xxhdpi/');
         $thumb_img = Image::make($photo->getRealPath())->resize(72, 72);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . 'xxhdpi' . $imagename);
 
         $destinationPath = public_path('upload/android/mipmap-xxxhdpi/');
         $thumb_img = Image::make($photo->getRealPath())->resize(36, 36);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . 'xxxhdpi' . $imagename);
 
         $destinationPath = public_path('upload/android/mipmap-hdpi/');
         $thumb_img = Image::make($photo->getRealPath())->resize(48, 48);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . 'hdpi' . $imagename);
 
-         $destinationPath = public_path('upload/android/mipmap-ldpi/');
-         $thumb_img = Image::make($photo->getRealPath())->resize(36, 36);
-         $thumb_img->save($destinationPath.'/'.$imagename);
+        $destinationPath = public_path('upload/android/mipmap-ldpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(36, 36);
+        $thumb_img->save($destinationPath . '/' . 'ldpi' . $imagename);
 
-         $destinationPath = public_path('upload/android/mipmap-mdpi/');
-         $thumb_img = Image::make($photo->getRealPath())->resize(48, 48);
-         $thumb_img->save($destinationPath.'/'.$imagename);
+        $destinationPath = public_path('upload/android/mipmap-mdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(48, 48);
+        $thumb_img->save($destinationPath . '/' . 'mdpi' . $imagename);
 
-         $destinationPath = public_path('upload/android/mipmap-xhdpi/');
-         $thumb_img = Image::make($photo->getRealPath())->resize(96, 96);
-         $thumb_img->save($destinationPath.'/'.$imagename);
+        $destinationPath = public_path('upload/android/mipmap-xhdpi/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(96, 96);
+        $thumb_img->save($destinationPath . '/' . 'xhdpi' . $imagename);
 
 
-         $destinationPath = public_path('upload/android/playstore-icon/');
-         $thumb_img = Image::make($photo->getRealPath())->resize(256, 256);
-         $thumb_img->save($destinationPath.'/'.$imagename);
+        $destinationPath = public_path('upload/android/playstore-icon/');
+        $thumb_img = Image::make($photo->getRealPath())->resize(256, 256);
+        $thumb_img->save($destinationPath . '/' . 'icon' . $imagename);
 
 
         // iphone
@@ -64,381 +66,382 @@ class ImageController extends Controller
 
         $destinationPath = public_path('upload/iphone/i20/Icon-App-20x20@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '20x20@2x' . $imagename);
 
         $destinationPath = public_path('upload/iphone/i20/Icon-App-20x20@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(60, 60);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '20x20@3x' . $imagename);
 
-         $destinationPath = public_path('upload/iphone/i29/Icon-App-29x29@1x/');
+        $destinationPath = public_path('upload/iphone/i29/Icon-App-29x29@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(29, 29);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '29x29@1x' . $imagename);
 
         // // i29-------------------------------------------
 
-         $destinationPath = public_path('upload/iphone/i29/Icon-App-29x29@2x/');
+        $destinationPath = public_path('upload/iphone/i29/Icon-App-29x29@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(58, 58);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '29x29@2x' . $imagename);
 
-         $destinationPath = public_path('upload/iphone/i29/Icon-App-29x29@3x/');
+        $destinationPath = public_path('upload/iphone/i29/Icon-App-29x29@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(87, 87);
-        $thumb_img->save($destinationPath.'/'.$imagename);
-        
+        $thumb_img->save($destinationPath . '/' . '29x29@3x' . $imagename);
+
         // // i40-----------------------------------------
 
-         $destinationPath = public_path('upload/iphone/i40/Icon-App-40x40@1x/');
+        $destinationPath = public_path('upload/iphone/i40/Icon-App-40x40@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(40, 40);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '40x40@1x' . $imagename);
 
-         $destinationPath = public_path('upload/iphone/i40/Icon-App-40x40@2x/');
+        $destinationPath = public_path('upload/iphone/i40/Icon-App-40x40@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(80, 80);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '40x40@2x' . $imagename);
 
 
-         $destinationPath = public_path('upload/iphone/i40/Icon-App-40x40@3x/');
+        $destinationPath = public_path('upload/iphone/i40/Icon-App-40x40@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(120, 120);
-        $thumb_img->save($destinationPath.'/'.$imagename);
-    
+        $thumb_img->save($destinationPath . '/' . '40x40@3x' . $imagename);
+
 
         // // i57-----------------------------------------
 
-           $destinationPath = public_path('upload/iphone/i57/Icon-App-57x57@1x/');
+        $destinationPath = public_path('upload/iphone/i57/Icon-App-57x57@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(57, 57);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '57x57@1x' . $imagename);
 
-           $destinationPath = public_path('upload/iphone/i57/Icon-App-57x57@2x/');
+        $destinationPath = public_path('upload/iphone/i57/Icon-App-57x57@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(114, 114);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '57x57@2x' . $imagename);
 
 
+        // // i60-----------------------------------------
 
-        // // i60-----------------------------------------    
-
-          $destinationPath = public_path('upload/iphone/i60/Icon-App-60x60@1x/');
+        $destinationPath = public_path('upload/iphone/i60/Icon-App-60x60@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(60, 60);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '60x60@1x' . $imagename);
 
-          $destinationPath = public_path('upload/iphone/i60/Icon-App-60x60@2x/');
+        $destinationPath = public_path('upload/iphone/i60/Icon-App-60x60@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(120, 120);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '60x60@2x' . $imagename);
 
-          $destinationPath = public_path('upload/iphone/i60/Icon-App-60x60@3x/');
+        $destinationPath = public_path('upload/iphone/i60/Icon-App-60x60@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(180, 180);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '60x60@3x' . $imagename);
 
 
-        // // i72----------------------------------------- 
+        // // i72-----------------------------------------
 
 
-          $destinationPath = public_path('upload/iphone/i72/Icon-App-72x72@1x/');
+        $destinationPath = public_path('upload/iphone/i72/Icon-App-72x72@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(72, 72);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '72x72@1x' . $imagename);
 
-          $destinationPath = public_path('upload/iphone/i72/Icon-App-72x72@2x/');
+        $destinationPath = public_path('upload/iphone/i72/Icon-App-72x72@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(144, 144);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '72x72@2x' . $imagename);
 
 
-        // // i76----------------------------------------- 
+        // // i76-----------------------------------------
 
-         $destinationPath = public_path('upload/iphone/i76/Icon-App-76x76@1x/');
+        $destinationPath = public_path('upload/iphone/i76/Icon-App-76x76@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(76, 76);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '76x76@1x' . $imagename);
 
-         $destinationPath = public_path('upload/iphone/i76/Icon-App-76x76@2x/');
+        $destinationPath = public_path('upload/iphone/i76/Icon-App-76x76@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(152, 152);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '76x76@2x' . $imagename);
 
-         $destinationPath = public_path('upload/iphone/i76/Icon-App-76x76@3x/');
+        $destinationPath = public_path('upload/iphone/i76/Icon-App-76x76@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(228, 228);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '76x76@3x' . $imagename);
 
 
-        // // i83.5----------------------------------------- 
+        // // i83.5-----------------------------------------
 
         $destinationPath = public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(167, 167);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '83.5x83.5@2x' . $imagename);
 
 
-        // // ismall50----------------------------------------- 
+        // // ismall50-----------------------------------------
 
         $destinationPath = public_path('upload/iphone/ismall50/Icon-Small-50x50@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(50, 50);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '50x50@1x' . $imagename);
 
         $destinationPath = public_path('upload/iphone/ismall50/Icon-Small-50x50@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(100, 100);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '50x50@2x' . $imagename);
 
-         // iphone----------------------------------------- 
+        // iphone-----------------------------------------
 
         $destinationPath = public_path('upload/iphone/istore/');
         $thumb_img = Image::make($photo->getRealPath())->resize(1024, 1024);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . 'istore' . $imagename);
 
-        // imessenger
+//         imessenger
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-27x20@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(27, 20);
-        $thumb_img->save($destinationPath.'/'.$imagename);
-        
+        $thumb_img->save($destinationPath . '/' . '27x20@1x' . $imagename);
+
         $destinationPath = public_path('upload/imessenger/icon-messages-app-27x20@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(54, 40);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '27x20@2x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-27x20@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(81, 60);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '27x20@3x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(134, 100);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '67x50@2x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(148, 110);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '74x55@2x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(60, 45);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '60x45@1x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(120, 90);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '60x45@2x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(180, 135);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '60x45@3x' . $imagename);
 
-        $destinationPath = public_path('upload/imessenger/icon-messages-app-store-1024x768/');
-        $thumb_img = Image::make($photo->getRealPath())->resize(1024, 768);
-        $thumb_img->save($destinationPath.'/'.$imagename);
-        
-         $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@1x/');
+        $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@1x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(32, 24);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '32x24@1x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@2x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(64, 48);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '32x24@2x' . $imagename);
 
         $destinationPath = public_path('upload/imessenger/icon-messages-transcript-32x24@3x/');
         $thumb_img = Image::make($photo->getRealPath())->resize(96, 72);
-        $thumb_img->save($destinationPath.'/'.$imagename);
+        $thumb_img->save($destinationPath . '/' . '32x24@3x' . $imagename);
 
 
+//        $destinationPath = public_path('upload/');
+//        $photo->move($destinationPath, $imagename);
 
-
-
-
-
-        $destinationPath = public_path('upload/');
-        $photo->move($destinationPath, $imagename);
-
-//        $this->zipConvert();
 
         return back()
-            ->with('success','Image Upload successful')
-            ->with('imagename',$imagename);
+            ->with('success', 'Image Upload successful')
+            ->with('imagename', $imagename);
 
-         }
-
-     public function zipConvert()
-    {
-        $files = glob(public_path('upload/'));
-
-            $time=date('now');
-            $filename='temp'.'.zip';
-
-            Zipper::make(public_path().'/upload/'.$filename)->add($files);
-
-            $file = storage_path().'/'.$filename;
-
-            if(file_exists(public_path().'/upload/'.$filename)){
-            $this->do_download_zip($filename);
-            }
     }
 
-    public function do_download_zip($filename){
-          
-         $img = public_path().'/upload/'.$filename;
-            header("Content-Type: application/zip");
-            header("Content-Length: ");
+    public function zipConvert()
+    {
+        $files = glob(public_path('upload/'));
+        $filename = 'temp' . '.zip';
 
-            echo file_get_contents($img);
-            die();
-            }   
+        $zipper = new \Chumper\Zipper\Zipper;
+        $zipper->make(public_path() . '/upload/' . $filename)->add($files);
+        $zipper->close();
 
-    public function clearDir($dir){
-        
-         $structure = glob(rtrim($dir, "/").'/*');
+//        $file = storage_path() . '/' . $filename;
+
+        if (file_exists(public_path() . '/upload/' . $filename)) {
+            $this->do_download_zip($filename);
+        } else {
+            echo 'file not exist';
+        }
+
+    }
+
+    public function do_download_zip($filename)
+    {
+
+        $img = public_path() . '/upload/' . $filename;
+
+
+        header("Content-Type: application/zip");
+        header("Content-Length: ");
+
+        echo file_get_contents($img);
+        unlink($img);
+        die();
+    }
+
+    public function clearDir($dir)
+    {
+        $structure = glob(rtrim($dir, "/") . '/*');
 
         if (is_array($structure)) {
 
-            foreach($structure as $file) {
-
-            unlink($file);
-
+            foreach ($structure as $file) {
+                if (!is_dir($file)) {
+                    unlink($file);
+                }
             }
         }
-        rmdir($dir);
+        if ($dir != public_path('upload/')) {
+            rmdir($dir);
+        }
 
-     }
+    }
 
-    public function existDirectory(){
+    public function existDirectory()
+    {
 
-         // for android
+        // for android
+
 
         if (file_exists(public_path('upload/android/mipmap-xxhdpi/'))) {
-            $res=$this->clearDir(public_path('upload/android/mipmap-xxhdpi/'));
+            $res = $this->clearDir(public_path('upload/android/mipmap-xxhdpi/'));
         }
         if (file_exists(public_path('upload/android/mipmap-xxxhdpi/'))) {
-            $res=$this->clearDir(public_path('upload/android/mipmap-xxxhdpi/'));
+            $res = $this->clearDir(public_path('upload/android/mipmap-xxxhdpi/'));
         }
         if (file_exists(public_path('upload/android/mipmap-hdpi/'))) {
-            $res=$this->clearDir(public_path('upload/android/mipmap-hdpi/'));
+            $res = $this->clearDir(public_path('upload/android/mipmap-hdpi/'));
         }
         if (file_exists(public_path('upload/android/mipmap-ldpi/'))) {
-            $res=$this->clearDir(public_path('upload/android/mipmap-ldpi/'));
+            $res = $this->clearDir(public_path('upload/android/mipmap-ldpi/'));
         }
         if (file_exists(public_path('upload/android/mipmap-mdpi/'))) {
-            $res=$this->clearDir(public_path('upload/android/mipmap-mdpi/'));
+            $res = $this->clearDir(public_path('upload/android/mipmap-mdpi/'));
         }
         if (file_exists(public_path('upload/android/mipmap-xhdpi/'))) {
-            $res=$this->clearDir(public_path('upload/android/mipmap-xhdpi/'));
+            $res = $this->clearDir(public_path('upload/android/mipmap-xhdpi/'));
         }
         if (file_exists(public_path('upload/android/playstore-icon/'))) {
-            $res=$this->clearDir(public_path('upload/android/playstore-icon/'));
+            $res = $this->clearDir(public_path('upload/android/playstore-icon/'));
         }
 
         // for iphone
         // 20*20
 
-         if (file_exists(public_path('upload/iphone/i20/Icon-App-20x20@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i20/Icon-App-20x20@2x/'));
+        if (file_exists(public_path('upload/iphone/i20/Icon-App-20x20@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i20/Icon-App-20x20@2x/'));
         }
-           if (file_exists(public_path('upload/iphone/i20/Icon-App-20x20@3x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i20/Icon-App-20x20@3x/'));
+        if (file_exists(public_path('upload/iphone/i20/Icon-App-20x20@3x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i20/Icon-App-20x20@3x/'));
         }
         // 30*30
 
         if (file_exists(public_path('upload/iphone/i29/Icon-App-29x29@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i29/Icon-App-29x29@1x/'));
+            $res = $this->clearDir(public_path('upload/iphone/i29/Icon-App-29x29@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/i29/Icon-App-29x29@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i29/Icon-App-29x29@2x/'));
+        if (file_exists(public_path('upload/iphone/i29/Icon-App-29x29@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i29/Icon-App-29x29@2x/'));
         }
-          if (file_exists(public_path('upload/iphone/i29/Icon-App-29x29@3x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i29/Icon-App-29x29@3x/'));
+        if (file_exists(public_path('upload/iphone/i29/Icon-App-29x29@3x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i29/Icon-App-29x29@3x/'));
         }
 
         // 40*40
-          if (file_exists(public_path('upload/iphone/i40/Icon-App-40x40@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i40/Icon-App-40x40@1x/'));
+        if (file_exists(public_path('upload/iphone/i40/Icon-App-40x40@1x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i40/Icon-App-40x40@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/i40/Icon-App-40x40@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i40/Icon-App-40x40@2x/'));
+        if (file_exists(public_path('upload/iphone/i40/Icon-App-40x40@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i40/Icon-App-40x40@2x/'));
         }
-          if (file_exists(public_path('upload/iphone/i40/Icon-App-40x40@3x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i40/Icon-App-40x40@3x/'));
+        if (file_exists(public_path('upload/iphone/i40/Icon-App-40x40@3x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i40/Icon-App-40x40@3x/'));
         }
 
         // 57*57
 
-         if (file_exists(public_path('upload/iphone/i57/Icon-App-57x57@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i57/Icon-App-57x57@1x/'));
+        if (file_exists(public_path('upload/iphone/i57/Icon-App-57x57@1x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i57/Icon-App-57x57@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/i57/Icon-App-57x57@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i57/Icon-App-57x57@2x/'));
+        if (file_exists(public_path('upload/iphone/i57/Icon-App-57x57@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i57/Icon-App-57x57@2x/'));
         }
         // 60*60
 
-            if (file_exists(public_path('upload/iphone/i60/Icon-App-60x60@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i60/Icon-App-60x60@1x/'));
+        if (file_exists(public_path('upload/iphone/i60/Icon-App-60x60@1x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i60/Icon-App-60x60@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/i60/Icon-App-60x60@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i60/Icon-App-60x60@2x/'));
+        if (file_exists(public_path('upload/iphone/i60/Icon-App-60x60@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i60/Icon-App-60x60@2x/'));
         }
-          if (file_exists(public_path('upload/iphone/i60/Icon-App-60x60@3x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i60/Icon-App-60x60@3x/'));
+        if (file_exists(public_path('upload/iphone/i60/Icon-App-60x60@3x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i60/Icon-App-60x60@3x/'));
         }
 
-          // 72*72
+        // 72*72
 
-         if (file_exists(public_path('upload/iphone/i72/Icon-App-72x72@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i72/Icon-App-72x72@1x/'));
+        if (file_exists(public_path('upload/iphone/i72/Icon-App-72x72@1x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i72/Icon-App-72x72@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/i72/Icon-App-72x72@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i72/Icon-App-72x72@2x/'));
+        if (file_exists(public_path('upload/iphone/i72/Icon-App-72x72@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i72/Icon-App-72x72@2x/'));
         }
         // 76*76
 
-            if (file_exists(public_path('upload/iphone/i76/Icon-App-76x76@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i76/Icon-App-76x76@1x/'));
+        if (file_exists(public_path('upload/iphone/i76/Icon-App-76x76@1x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i76/Icon-App-76x76@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/i76/Icon-App-76x76@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i76/Icon-App-76x76@2x/'));
+        if (file_exists(public_path('upload/iphone/i76/Icon-App-76x76@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i76/Icon-App-76x76@2x/'));
         }
-          if (file_exists(public_path('upload/iphone/i76/Icon-App-76x76@3x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i76/Icon-App-76x76@3x/'));
+        if (file_exists(public_path('upload/iphone/i76/Icon-App-76x76@3x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i76/Icon-App-76x76@3x/'));
         }
 
         // 83.5
 
-          if (file_exists(public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/'));
+        if (file_exists(public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/'));
         }
         // ismall50
 
-            if (file_exists(public_path('upload/iphone/ismall50/Icon-Small-50x50@1x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/ismall50/Icon-Small-50x50@1x/'));
+        if (file_exists(public_path('upload/iphone/ismall50/Icon-Small-50x50@1x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/ismall50/Icon-Small-50x50@1x/'));
         }
-          if (file_exists(public_path('upload/iphone/ismall50/Icon-Small-50x50@2x/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/ismall50/Icon-Small-50x50@2x/'));
+        if (file_exists(public_path('upload/iphone/ismall50/Icon-Small-50x50@2x/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/ismall50/Icon-Small-50x50@2x/'));
         }
         // istore
 
-          if (file_exists(public_path('upload/iphone/istore/'))) {
-            $res=$this->clearDir(public_path('upload/iphone/istore/'));
+        if (file_exists(public_path('upload/iphone/istore/'))) {
+            $res = $this->clearDir(public_path('upload/iphone/istore/'));
         }
 
         // imessanger
-      if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@1x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@1x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@1x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@1x/'));
         }
-         if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@2x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@2x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@2x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@2x/'));
         }
-          if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@3x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@3x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-27x20@3x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-27x20@3x/'));
         }
-          if (file_exists(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-iPadAir-67x50@2x/'));
         }
-          if (file_exists(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-iPadAir-74x55@2x/'));
         }
-         if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'));
         }
-          if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'));
         }
-         if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'));
         }
-        //  if (file_exists(public_path('upload/imessenger/icon-messages-app-store-1024x768/'))) {
-        //     $res=$this->clearDir(public_path('upload/imessenger/icon-messages-app-store-1024x768/'));
-        // }
         if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'));
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'));
         }
         if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'));
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'));
         }
-         if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'))) {
-            $res=$this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'));
+        if (file_exists(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'))) {
+            $res = $this->clearDir(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'));
+        }
+
+        if (file_exists(public_path('upload/'))) {
+            $res = $this->clearDir(public_path('upload/'));
         }
 
 
@@ -479,7 +482,7 @@ class ImageController extends Controller
         mkdir(public_path('upload/iphone/i76/Icon-App-76x76@2x/'), 0777, true);
         mkdir(public_path('upload/iphone/i76/Icon-App-76x76@3x/'), 0777, true);
         // 83.5
-         mkdir(public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/'), 0777, true);
+        mkdir(public_path('upload/iphone/i83.5/Icon-App-83.5x83.5@2x/'), 0777, true);
         // ismall50
         mkdir(public_path('upload/iphone/ismall50/Icon-Small-50x50@1x/'), 0777, true);
         mkdir(public_path('upload/iphone/ismall50/Icon-Small-50x50@2x/'), 0777, true);
@@ -487,7 +490,7 @@ class ImageController extends Controller
         mkdir(public_path('upload/iphone/istore/'), 0777, true);
 
         // imessenger
-        
+
         mkdir(public_path('upload/imessenger/icon-messages-app-27x20@1x/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-app-27x20@2x/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-app-27x20@3x/'), 0777, true);
@@ -496,7 +499,6 @@ class ImageController extends Controller
         mkdir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@1x/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@2x/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-app-iPhone-60x45@3x/'), 0777, true);
-        // mkdir(public_path('upload/imessenger/icon-messages-app-store-1024x768/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-transcript-32x24@1x/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-transcript-32x24@2x/'), 0777, true);
         mkdir(public_path('upload/imessenger/icon-messages-transcript-32x24@3x/'), 0777, true);
