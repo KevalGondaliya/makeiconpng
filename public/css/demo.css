@@ -123,6 +123,7 @@ section {
 .container-fluid {
     position: relative;
     z-index: 9;
+    margin-top: 30px;
 }
 
 .wrapper {
@@ -133,7 +134,7 @@ section {
 
 .btn-primary {
     background: #ffffff none repeat scroll 0 0;
-    border: 0 none;
+    /*border: 0 none;*/
     border-radius: 50px;
     color: #000;
     font-family: "PT Sans Narrow", sans-serif;
@@ -307,7 +308,7 @@ Intro Section
     background: url(../img/demo/intro.jpg) fixed no-repeat;
     background-size: cover;
     background-position: center;
-    height: 600px;
+    height: 280px;
     color: #fff;
     text-align: center;
 }
@@ -894,6 +895,7 @@ nav.navbar.navbar-default.navbar-fixed-top.nav-center-aligned {
     background-color: #f3f3f3;
     box-shadow: 10px 10px #e8e8e8;
     border-radius: 10px;
+
 }
 #iphone_icon {
      padding: 15px;
@@ -901,7 +903,20 @@ nav.navbar.navbar-default.navbar-fixed-top.nav-center-aligned {
     box-shadow: 10px 10px #e8e8e8;
     border-radius: 10px;
     margin: 2px;
+
+}
+#imessenger {
+    padding: 15px;
+    background-color: #f3f3f3;
+    box-shadow: 10px 10px #e8e8e8;
+    border-radius: 10px;
+    margin: 2px;
+
 }
 #img-icon {
     border-radius: 5px;
+}
+.image_container {
+    margin-left: 7%;
+    margin-top: 20px;
 }
