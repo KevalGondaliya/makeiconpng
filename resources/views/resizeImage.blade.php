@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="http://quomodosoft.com/html/appro/demo/index.html#" class="navbar-brand">
+                <a href="http://localhost:8000/#home" class="navbar-brand">
                     <!--<img src="images/logo.png" alt="">-->
                     <h2 class="text-white logo-text">APPICON</h2>
                 </a>
